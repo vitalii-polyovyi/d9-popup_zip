@@ -1,0 +1,23 @@
+administer telegram_chat:
+  title: 'Administer telegram_chat settings'
+  restrict access: true
+delete telegram_chat:
+  title: Delete telegram_chat
+create telegram_chat:
+  title: Create telegram_chat
+view telegram_chat:
+  title: View telegram_chat
+edit telegram_chat:
+  title: Edit telegram_chat
+
+administer tg_chat:
+  title: 'Administer tg_chat settings'
+  restrict access: true
+delete tg_chat:
+  title: Delete tg_chat
+create tg_chat:
+  title: Create tg_chat
+view tg_chat:
+  title: View tg_chat
+edit tg_chat:
+  title: Edit tg_chat

@@ -1,0 +1,7 @@
+
+
+tg_chat.add_form:
+  title: 'Add tg_chat'
+  route_name: entity.tg_chat.add_form
+  appears_on:
+    - entity.tg_chat.collection

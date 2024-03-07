@@ -1,0 +1,22 @@
+entity.tg_chat.settings:
+  title: 'Settings'
+  route_name: entity.tg_chat.settings
+  base_route: entity.tg_chat.settings
+entity.tg_chat.view:
+  title: 'View'
+  route_name: entity.tg_chat.canonical
+  base_route: entity.tg_chat.canonical
+entity.tg_chat.edit_form:
+  title: 'Edit'
+  route_name: entity.tg_chat.edit_form
+  base_route: entity.tg_chat.canonical
+entity.tg_chat.delete_form:
+  title: 'Delete'
+  route_name: entity.tg_chat.delete_form
+  base_route: entity.tg_chat.canonical
+  weight: 10
+entity.tg_chat.collection:
+  title: 'tg_chats'
+  route_name: entity.tg_chat.collection
+  base_route: system.admin_content
+  weight: 10

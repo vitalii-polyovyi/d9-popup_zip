@@ -1,0 +1,7 @@
+name: popup_zip
+type: module
+description: Popup zip form and questions
+package: Unava
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal_telegram_sdk

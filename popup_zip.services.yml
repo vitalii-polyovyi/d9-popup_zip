@@ -1,0 +1,6 @@
+services:
+  popup_zip.event_subscriber:
+    class: Drupal\popup_zip\EventSubscriber\PopupZipSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,10 @@
+entity.tg_chat.edit_form:
+  route_name: entity.tg_chat.edit_form
+  group: tg_chat
+  title: Edit
+
+entity.tg_chat.delete_form:
+  route_name: entity.tg_chat.delete_form
+  group: tg_chat
+  title: Delete
+  weight: 10

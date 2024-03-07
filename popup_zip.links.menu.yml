@@ -1,0 +1,18 @@
+popup_zip.settings_form:
+  title: 'popup_zip'
+  description: 'Configure popup_zip.'
+  parent: system.admin_config_system
+  route_name: popup_zip.settings_form
+  weight: 10
+
+
+entity.tg_chat.settings:
+  title: 'tg_chat'
+  description: 'Configure a tg_chat entity type.'
+  route_name:  entity.tg_chat.settings
+  parent: system.admin_structure
+entity.tg_chat.collection:
+  title: 'tg_chats'
+  description: 'List of tg_chats.'
+  route_name: entity.tg_chat.collection
+  parent: system.admin_content

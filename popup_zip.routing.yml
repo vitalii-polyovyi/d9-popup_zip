@@ -1,0 +1,43 @@
+popup_zip.settings_form:
+  path: '/admin/config/system/popup-zip'
+  defaults:
+    _title: 'popup_zip settings'
+    _form: 'Drupal\popup_zip\Form\SettingsForm'
+  requirements:
+    _permission: 'administer popup_zip configuration'
+
+popup_zip.questions:
+  path: '/popup-zip/questions'
+  defaults:
+    _title: 'Questions'
+#    _form: 'Drupal\popup_zip\Form\QuestionsForm'
+  requirements:
+    _permission: 'access content'
+
+popup_zip.popup_zip_form:
+  path: '/popup_zip/popup_zip_form'
+  defaults:
+    _title: 'Zip'
+    _controller: '\Drupal\popup_zip\Controller\PopupZipController::openZipModal'
+  requirements:
+    _permission: 'access content'
+  options:
+    no_cache: 'TRUE'
+
+popup_zip.send_problem:
+  path: '/send-problem'
+  defaults:
+    _title: 'Send problem'
+    _form: 'Drupal\popup_zip\Form\SendProblemForm'
+  requirements:
+    _permission: 'access content'
+
+
+
+entity.tg_chat.settings:
+  path: 'admin/structure/tg-chat'
+  defaults:
+    _form: '\Drupal\popup_zip\Form\TgChatSettingsForm'
+    _title: 'tg_chat'
+  requirements:
+    _permission: 'administer tg_chat'

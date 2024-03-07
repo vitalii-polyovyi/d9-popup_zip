@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * Provides a tg_chat entity type.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\popup_zip\Entity\TgChat;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function popup_zip_theme() {
+  return [
+    'tg_chat' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
+
+/**
+ * Prepares variables for tg_chat templates.
+ *
+ * Default template: tg-chat.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the tg_chat information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_tg_chat(array &$variables) {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function popup_zip_user_cancel($edit, UserInterface $account, $method) {
+  switch ($method) {
+    case 'user_cancel_block_unpublish':
+      // Unpublish tg_chats.
+      $storage = \Drupal::entityTypeManager()->getStorage('tg_chat');
+      $tg_chat_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->condition('status', 1)
+        ->execute();
+      foreach ($storage->loadMultiple($tg_chat_ids) as $tg_chat) {
+        $tg_chat->set('status', FALSE);
+        $tg_chat->save();
+      }
+      break;
+
+    case 'user_cancel_reassign':
+      // Anonymize tg_chats.
+      $storage = \Drupal::entityTypeManager()->getStorage('tg_chat');
+      $tg_chat_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->execute();
+      foreach ($storage->loadMultiple($tg_chat_ids) as $tg_chat) {
+        $tg_chat->setOwnerId(0);
+        $tg_chat->save();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for user entities.
+ */
+function popup_zip_user_predelete(UserInterface $account) {
+  // Delete tg_chats.
+  $storage = \Drupal::entityTypeManager()->getStorage('tg_chat');
+  $tg_chat_ids = $storage->getQuery()
+    ->condition('uid', $account->id())
+    ->execute();
+  $tg_chats = $storage->loadMultiple($tg_chat_ids);
+  $storage->delete($tg_chats);
+}
